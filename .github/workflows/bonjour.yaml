@@ -2,8 +2,7 @@ name: Exemple Bonjour
 run-name: Exemple Bonjour
 
 on:
-  push:
-    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
   dire-bonjour:

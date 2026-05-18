@@ -1,0 +1,26 @@
+name: CI Java avec Maven
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Récupérer le code source
+      uses: actions/checkout@v4
+    - name: Configurer JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: 'maven'
+
+    - name: Construire avec Maven
+      run: mvn -B clean package
+    - name: Sauvegarder les artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: java-artifact
+        path: target/*.jar
