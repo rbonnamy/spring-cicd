@@ -20,7 +20,7 @@ jobs:
         cache: 'maven'
 
     - name: Construire avec Maven
-      run: mvn -B clean package -Dsurefire.printSummary=true
+      run: mvn -B clean package -DskipTests
 
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4

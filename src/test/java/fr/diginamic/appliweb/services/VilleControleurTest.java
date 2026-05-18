@@ -1,30 +1,18 @@
 package fr.diginamic.appliweb.services;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.diginamic.appliweb.dao.DepartementRepository;
-import fr.diginamic.appliweb.dao.VilleRepository;
-import fr.diginamic.appliweb.entites.Departement;
-import fr.diginamic.appliweb.entites.Ville;
-import fr.diginamic.appliweb.exceptions.ExceptionFonctionnelle;
-import fr.diginamic.appliweb.mappers.dtos.DepartementDto;
-import fr.diginamic.appliweb.mappers.dtos.VilleDto;
-import jakarta.transaction.Transactional;
+import static org.hamcrest.Matchers.containsString;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.w3c.dom.stylesheets.LinkStyle;
-
-import java.util.List;
-
-import static org.hamcrest.Matchers.containsString;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -33,15 +21,6 @@ public class VilleControleurTest {
 
     @Autowired
     private MockMvc mvc;
-
-    @Autowired
-    private ObjectMapper mapper;
-
-    @Autowired
-    private VilleRepository repository;
-
-    @Autowired
-    private DepartementRepository deptRepository;
 
     @Test
     public void testExtraire(){
