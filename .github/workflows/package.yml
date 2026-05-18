@@ -13,7 +13,7 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Configurer JDK 21
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v4
       with:
         java-version: '21'
         distribution: 'temurin'
@@ -23,7 +23,7 @@ jobs:
       run: mvn -B clean package
 
     - name: Sauvegarder les artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: java-artifact
         path: target/*.jar
