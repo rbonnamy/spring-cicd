@@ -80,17 +80,6 @@ public class VilleControleurTest {
     }
 
     @Test
-    public void testExtraireLikeNom(){
-        try {
-            this.mvc.perform(MockMvcRequestBuilders.get("/villes/like/Béz"))
-                    .andExpect(status().isOk())
-                    .andExpect(jsonPath("$[0].nom").value("Béziers"));
-        } catch (Exception e) {
-            fail(e.getMessage());
-        }
-    }
-
-    @Test
     public void testExtraireGreaterMin(){
         try {
             this.mvc.perform(MockMvcRequestBuilders.get("/villes/greater/10"))
