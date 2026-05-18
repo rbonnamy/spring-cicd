@@ -1,4 +1,5 @@
 name: CI Java avec Maven
+run-name: Build Maven
 
 on:
   push:
@@ -18,7 +19,7 @@ jobs:
         cache: 'maven'
 
     - name: Construire avec Maven
-      run: mvn -B clean package
+      run: mvn -B clean package
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v3
       with:
