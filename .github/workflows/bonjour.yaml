@@ -1,4 +1,5 @@
 name: Exemple Bonjour
+run-name: Test Bonjour
 
 on:
   push:
