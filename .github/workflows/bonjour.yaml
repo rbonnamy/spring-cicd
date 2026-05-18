@@ -1,5 +1,5 @@
 name: Exemple Bonjour
-run-name: Test Bonjour
+run-name: Exemple Bonjour
 
 on:
   push:
