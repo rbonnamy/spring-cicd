@@ -1,5 +1,6 @@
 package fr.diginamic.appliweb.services;
 
+import fr.diginamic.appliweb.entites.Departement;
 import fr.diginamic.appliweb.exceptions.ExceptionFonctionnelle;
 import fr.diginamic.appliweb.mappers.dtos.DepartementDto;
 import jakarta.servlet.http.HttpServletResponse;
@@ -63,4 +64,19 @@ public interface DepartementService {
      * @param response réponse HTTP
      */
     void exportVillesParDepartement(String code, HttpServletResponse response);
+
+    /**
+     * Recherche les données concernant un département sur une API externe et complète les données
+     * @param departement département à compléter
+     * @return Departement
+     */
+    void completeDepartement(Departement departement);
+
+    /**
+     * Vérifie les données d'un nouveau département avant d'insérer en base de données
+     * @param departement departement
+     * @return Departement issu de la base
+     * @throws throws ExceptionFonctionnelle si une règle de gestion n'est pas respectée
+     */
+	Departement verifierDonnesEtInsererDepartement(DepartementDto departement) throws ExceptionFonctionnelle;
 }

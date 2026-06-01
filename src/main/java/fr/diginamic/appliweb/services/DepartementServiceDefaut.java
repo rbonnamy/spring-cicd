@@ -1,24 +1,21 @@
 package fr.diginamic.appliweb.services;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
+
 import fr.diginamic.appliweb.dao.DepartementRepository;
-import fr.diginamic.appliweb.dao.VilleRepository;
 import fr.diginamic.appliweb.entites.Departement;
 import fr.diginamic.appliweb.exceptions.ExceptionFonctionnelle;
 import fr.diginamic.appliweb.exceptions.ExceptionTechnique;
 import fr.diginamic.appliweb.mappers.DepartementMapper;
-import fr.diginamic.appliweb.mappers.VilleMapper;
 import fr.diginamic.appliweb.mappers.dtos.DepartementDto;
 import fr.diginamic.appliweb.utils.pdf.PdfUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.Validator;
-import org.springframework.web.client.RestTemplate;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Service de type "Application" pour la gestion des départements.
@@ -30,25 +27,13 @@ public class DepartementServiceDefaut implements DepartementService {
     @Autowired
     private DepartementRepository dao;
 
-    /** Accès base de données à la table des villes */
-    @Autowired
-    private VilleRepository villeDao;
-
     /** Mapper pour transformer des Departement en DepartementDto */
     @Autowired
     private DepartementMapper mapper;
 
-    /** Mapper pour transformer des Ville en VilleDto */
-    @Autowired
-    private VilleMapper villeMapper;
-
     /** Pour la génération d'un PDF */
     @Autowired
     private PdfUtils pdfUtils;
-
-    /** Permet de valider les données obligatoires reçues du front */
-    @Autowired
-    private Validator validator;
 
     @Override
     public List<DepartementDto> extraire(){
@@ -157,7 +142,7 @@ public class DepartementServiceDefaut implements DepartementService {
      * @return Departement
      * @throws ExceptionFonctionnelle si les données du département sont incomplètes
      */
-    Departement verifierDonnesEtInsererDepartement(DepartementDto dto) throws ExceptionFonctionnelle {
+    public Departement verifierDonnesEtInsererDepartement(DepartementDto dto) throws ExceptionFonctionnelle {
 
         Departement dept = mapper.toBean(dto);
 
@@ -194,7 +179,7 @@ public class DepartementServiceDefaut implements DepartementService {
      * @param departement département à compléter
      */
     @Transactional
-    void completeDepartement(Departement departement) {
+    public void completeDepartement(Departement departement) {
 
         Departement deptExistant = dao.findByCode(departement.getCode());
         if (deptExistant!=null && deptExistant.getNom()==null){

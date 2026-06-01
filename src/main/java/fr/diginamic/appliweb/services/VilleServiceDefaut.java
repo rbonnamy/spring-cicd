@@ -1,5 +1,14 @@
 package fr.diginamic.appliweb.services;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
 import fr.diginamic.appliweb.dao.DepartementRepository;
 import fr.diginamic.appliweb.dao.VilleRepository;
 import fr.diginamic.appliweb.entites.Departement;
@@ -10,14 +19,6 @@ import fr.diginamic.appliweb.mappers.VilleMapper;
 import fr.diginamic.appliweb.mappers.dtos.VilleDto;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
-import org.springframework.validation.Errors;
-import org.springframework.validation.Validator;
-
-import java.io.IOException;
-import java.util.List;
 
 /**
  * Services de type "application" pour l'exécution des CU des villes.
@@ -27,7 +28,7 @@ public class VilleServiceDefaut implements VilleService {
 
     /** Services de type application pour l'exécution des CU des départements */
     @Autowired
-    private DepartementServiceDefaut departementService;
+    private DepartementService departementService;
 
     /** Accès base de données à la table des villes */
     @Autowired
