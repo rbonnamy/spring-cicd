@@ -33,6 +33,11 @@ jobs:
         name: jacoco-report
         path: target/site/jacoco
 
+    - name: Initialiser CodeQL
+      uses: github/codeql-action/init@v3
+      with:
+        languages: java-kotlin
+
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
 
