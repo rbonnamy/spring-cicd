@@ -36,7 +36,7 @@ jobs:
       uses: github/codeql-action/analyze@v4
 
     - name: Générer le site Maven
-      run: mvn site
+      run: mvn -B site -Dspring.profiles.active=test
 
     - name: Sauvegarder le rapport JaCoCo
       uses: actions/upload-artifact@v4
