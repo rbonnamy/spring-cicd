@@ -32,14 +32,23 @@ jobs:
     - name: Construire avec Maven
       run: mvn -B clean verify -Dspring.profiles.active=test
 
+    - name: Analyser avec CodeQL
+      uses: github/codeql-action/analyze@v4
+
+    - name: Générer le site Maven
+      run: mvn site
+
     - name: Sauvegarder le rapport JaCoCo
       uses: actions/upload-artifact@v4
       with:
         name: jacoco-report
         path: target/site/jacoco
 
-    - name: Analyser avec CodeQL
-      uses: github/codeql-action/analyze@v4
+    - name: Publier le rapport Checkstyle
+      uses: actions/upload-artifact@v4
+      with:
+        name: rapport-checkstyle
+        path: target/site/checkstyle.html
 
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4
