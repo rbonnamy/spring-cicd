@@ -50,6 +50,12 @@ jobs:
         name: rapport-checkstyle
         path: target/site/
 
+    - name: Publier le rapport SpotBugs
+      uses: actions/upload-artifact@v4
+      with:
+        name: rapport-spotbugs
+        path: target/spotbugsXml.xml
+
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4
       with:
