@@ -142,10 +142,9 @@
 				<version>4.9.3.0</version>
 
 				<configuration>
-					<fork>false</fork> <!-- Désactive le mode fork -->
 					<xmlOutput>true</xmlOutput>
 					<htmlOutput>true</htmlOutput>
-					<outputDirectory>${project.build.directory}/spotbugs</outputDirectory>
+					<spotbugsXmlOutputFilename>spotbugs.xml</spotbugsXmlOutputFilename>
 				</configuration>
 
 				<executions>
