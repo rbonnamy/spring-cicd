@@ -37,8 +37,7 @@ public class DepartementDao {
     public Departement extraireParNom(String nom){
 
         // Création de la requête :
-        TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x WHERE x.nom=:nom", Departement.class);
-        query.setParameter("nom", nom);
+        TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x WHERE x.nom="+nom, Departement.class);
 
         // Exécution de la requête :
         return query.getResultStream().findFirst().orElse(null);
