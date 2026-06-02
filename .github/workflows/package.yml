@@ -50,11 +50,10 @@ jobs:
         name: rapport-checkstyle
         path: target/site/
 
-    - name: Publier le rapport SpotBugs
-      uses: actions/upload-artifact@v4
+    - name: Publier le rapport SpotBugs SARIF dans GitHub Security
+      uses: github/codeql-action/upload-sarif@v4
       with:
-        name: rapport-spotbugs
-        path: target/
+        sarif_file: target/spotbugs.sarif
 
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4
