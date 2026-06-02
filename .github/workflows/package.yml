@@ -54,7 +54,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: rapport-spotbugs
-        path: target/spotbugsXml.xml
+        path: target/spotbugs/
 
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4
