@@ -145,7 +145,7 @@
 					<execution>
 						<phase>verify</phase>
 						<goals>
-							<goal>check</goal>
+							<goal>spotbugs</goal>
 						</goals>
 					</execution>
 				</executions>
