@@ -24,6 +24,11 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
 
+    - name: Initialiser CodeQL
+      uses: github/codeql-action/init@v4
+      with:
+        languages: java-kotlin
+
     - name: Construire avec Maven
       run: mvn -B clean verify -Dspring.profiles.active=test
 
@@ -32,11 +37,6 @@ jobs:
       with:
         name: jacoco-report
         path: target/site/jacoco
-
-    - name: Initialiser CodeQL
-      uses: github/codeql-action/init@v3
-      with:
-        languages: java-kotlin
 
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
