@@ -1,0 +1,9 @@
+{
+  "build": {
+    "type": "maven",
+    "goal": "clean package -Dmaven.test.skip=true"
+  },
+  "deploy": {
+    "jarName": "target/back.jar"
+  }
+}
