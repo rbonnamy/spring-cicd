@@ -1,0 +1,18 @@
+name: Exemple Bonjour
+run-name: Exemple Bonjour
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Afficher Bonjour
+        run: echo "Job de build démarré"
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name : Action quelconque
+        run : echo "Job de test démarré"

@@ -1,0 +1,13 @@
+name: Exemple Bonjour
+run-name: Exemple Bonjour
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dire-bonjour:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Vérifier les fichiers
+        run: ls -la
