@@ -1,5 +1,4 @@
 name: CI Java avec Maven
-run-name: Build Maven
 
 on:
   workflow_dispatch:

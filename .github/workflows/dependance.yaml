@@ -1,5 +1,4 @@
-name: Exemple Bonjour
-run-name: Exemple Bonjour
+name: Dire Bonjour
 
 on:
   workflow_dispatch:

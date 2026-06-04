@@ -1,5 +1,4 @@
-name: Exemple Bonjour
-run-name: Exemple Bonjour
+name: Affichage fichiers
 
 on:
   workflow_dispatch:
