@@ -1,0 +1,21 @@
+name: Configurer Java 21
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configurer java 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: 21
+        distribution: 'temurin'
+        maven: 'cache'
+    - name: Affichage versions
+      run: |
+        echo 'version de Java:'
+        java -version
+        echo 'version de maven:'
+        mvn -v

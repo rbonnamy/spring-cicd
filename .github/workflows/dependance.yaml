@@ -1,7 +1,7 @@
 name: Dire Bonjour
 
 on:
-  push
+  workflow_dispatch
 
 env:
   SPRING_PROFILE: test
@@ -14,6 +14,7 @@ jobs:
         run: echo "Job de build démarré"
 
   deploy:
+    # Deploy ne s'exécute que sur la branche main dans un contexte de production
     if: github.ref == 'refs/head/main' && env.SPRING_PROFILE == 'prod'
     runs-on: ubuntu-latest
     needs: build
