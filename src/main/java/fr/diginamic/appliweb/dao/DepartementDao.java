@@ -15,7 +15,7 @@ public class DepartementDao {
     @PersistenceContext
     private EntityManager em;
 
-    public List<Departement> extraire(){
+    public List<Departement> findAll(){
 
         // Création de la requête :
         TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x", Departement.class);
@@ -24,7 +24,7 @@ public class DepartementDao {
         return query.getResultList();
     }
 
-    public Departement extraireParId(int id){
+    public Departement findById(int id){
 
         // Création de la requête :
         TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x WHERE x.id=:id", Departement.class);
@@ -34,7 +34,7 @@ public class DepartementDao {
         return query.getResultStream().findFirst().orElse(null);
     }
 
-    public Departement extraireParNom(String nom){
+    public Departement findByNom(String nom){
 
         // Création de la requête :
         TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x WHERE x.nom='"+nom+"'", Departement.class);
@@ -43,21 +43,33 @@ public class DepartementDao {
         return query.getResultStream().findFirst().orElse(null);
     }
 
-    public void inserer(Departement dept) {
-        em.persist(dept);
+    public Departement findByCode(String code){
+
+        // Création de la requête :
+        TypedQuery<Departement> query = em.createQuery("SELECT x FROM Departement x WHERE x.code='"+code+"'", Departement.class);
+
+        // Exécution de la requête :
+        return query.getResultStream().findFirst().orElse(null);
     }
 
-    public boolean modifier(Departement departement) {
-        Departement deptDB = extraireParId(departement.getId());
+    public Departement save(Departement dept) {
+
+        em.persist(dept);
+        return dept;
+    }
+
+    public Departement update(Departement departement) {
+        Departement deptDB = findById(departement.getId());
         if (deptDB!=null) {
             deptDB.setNom(departement.getNom());
-            return true;
+            deptDB.setCode(departement.getCode());
+            return deptDB;
         }
-        return false;
+        return deptDB;
     }
 
-    public boolean supprimer(int id) {
-        Departement deptDB = extraireParId(id);
+    public boolean delete(int id) {
+        Departement deptDB = findById(id);
         if (deptDB!=null) {
             em.remove(deptDB);
             return true;

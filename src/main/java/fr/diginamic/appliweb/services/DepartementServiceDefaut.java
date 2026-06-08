@@ -3,6 +3,7 @@ package fr.diginamic.appliweb.services;
 import java.io.IOException;
 import java.util.List;
 
+import fr.diginamic.appliweb.dao.DepartementDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -25,7 +26,7 @@ public class DepartementServiceDefaut implements DepartementService {
 
     /** Accès base de données à la table des départements */
     @Autowired
-    private DepartementRepository dao;
+    private DepartementDao dao;
 
     /** Mapper pour transformer des Departement en DepartementDto */
     @Autowired

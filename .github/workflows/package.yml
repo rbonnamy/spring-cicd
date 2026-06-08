@@ -33,27 +33,6 @@ jobs:
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
 
-    - name: Affichage information déploiement
-      run: echo "Déploiement avec la clé ${{ secrets.DEPLOY_URL }}"
-
-    - name: Sauvegarder le rapport JaCoCo
-      uses: actions/upload-artifact@v4
-      with:
-        name: jacoco-report
-        path: target/site/jacoco
-
-    - name: Publier le rapport Checkstyle
-      uses: actions/upload-artifact@v4
-      with:
-        name: rapport-checkstyle
-        path: target/site/
-
-    - name: Publier le rapport SpotBugs
-      uses: actions/upload-artifact@v4
-      with:
-        name: rapport-spotbugs
-        path: target/spotbugs/
-
     - name: Sauvegarder les artifacts
       uses: actions/upload-artifact@v4
       with:
