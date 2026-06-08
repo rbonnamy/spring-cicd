@@ -29,7 +29,14 @@ jobs:
         languages: java-kotlin
 
     - name: Construire avec Maven
-      run: mvn -B clean package -DskipTests
+      run: mvn -B clean verify
 
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
+
+    - name: Sauvegarder le rapport JaCoCo
+      uses: actions/upload-artifact@v4
+      with:
+        name: jacoco-report # nom donné au rapport au niveau du build
+        path: target/site/jacoco # endroit où est généré le rapport Java sur le runner
+
