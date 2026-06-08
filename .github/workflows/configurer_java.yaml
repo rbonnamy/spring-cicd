@@ -12,10 +12,5 @@ jobs:
       with:
         java-version: 21
         distribution: 'temurin'
-        maven: 'cache'
     - name: Affichage versions
-      run: |
-        echo 'version de Java:'
-        java -version
-        echo 'version de maven:'
-        mvn -v
+      run: echo 'Liste des fichiers:';ls -al
