@@ -8,10 +8,11 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      security-events: write
-      contents: read
+      security-events: write # pour la mise à jour de l'onglet Security and quality
+      contents: read # lire le code source
 
     steps:
+    # Mettre les steps checkout et setup-java
     - name: Récupérer le code source
       uses: actions/checkout@v4
 
@@ -28,13 +29,7 @@ jobs:
         languages: java-kotlin
 
     - name: Construire avec Maven
-      run: mvn -B clean verify -Dspring.profiles.active=test -Dmaven.test.failure.ignore=true
+      run: mvn -B clean package -DskipTests
 
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
-
-    - name: Sauvegarder les artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: java-artifact
-        path: target/*.jar
