@@ -1,4 +1,4 @@
-name: CI Java avec Maven
+name: CI/CD projet
 
 on:
   workflow_dispatch:
@@ -6,10 +6,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      security-events: write
-      contents: read
 
     steps:
     - name: Récupérer le code source
