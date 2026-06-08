@@ -1,7 +1,9 @@
 name: Dire Bonjour
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   dire-bonjour:
@@ -10,3 +12,6 @@ jobs:
     steps:
     - name: Afficher Bonjour
       run: echo "Bonjour depuis GitHub Actions !"
+
+    - name: Lister les fichiers
+      run: ls -al
