@@ -48,3 +48,9 @@ jobs:
       with:
         name: checkstyle-report # nom donné au rapport au niveau du build
         path: target/site # endroit où est généré le rapport Java sur le runner
+
+    - name: Sauvegarder le rapport SpotBugs
+      uses: actions/upload-artifact@v4
+      with:
+        name: spotbugs-report # nom donné au rapport au niveau du build
+        path: target/spotbugs # endroit où est généré le rapport Java sur le runner
