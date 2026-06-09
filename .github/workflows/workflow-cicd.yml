@@ -31,11 +31,11 @@ jobs:
     - name: Construire avec Maven
       run: mvn -B clean verify -Dspring.profiles.active=test
 
-    - name: Générer les rapports
-      run: mvn site
-
     - name: Analyser avec CodeQL
       uses: github/codeql-action/analyze@v4
+
+    - name: Générer les rapports
+      run: mvn site
 
     - name: Sauvegarder le rapport JaCoCo
       uses: actions/upload-artifact@v4
