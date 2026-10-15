@@ -9,4 +9,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo bonjour
-        run: echo "Bonjour tout le monde !"
+        run: echo "Bonjour tout le monde !" - ${secret.TEST}
