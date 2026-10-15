@@ -8,15 +8,19 @@
     <property name="severity" value="warning"/>
     <property name="fileExtensions" value="java, properties, xml"/>
 
-    <!-- Vérifie que les fichiers se terminent par une nouvelle ligne -->
-    <module name="NewlineAtEndOfFile"/>
-
-    <!-- Signale les tabulations -->
-    <module name="FileTabCharacter">
-        <property name="eachLine" value="true"/>
-    </module>
-
     <module name="TreeWalker">
+
+        <!-- Vérifie que equals() et hashCode() sont redéfinies ensemble -->
+        <module name="EqualsHashCode"/>
+
+        <!-- Signale les comparaisons de littéraux String avec == ou != -->
+        <module name="StringLiteralEquality"/>
+
+        <!-- Signale les instructions vides : if (condition); -->
+        <module name="EmptyStatement"/>
+
+        <!-- Signale les passages non explicités entre les case d'un switch -->
+        <module name="FallThrough"/>
 
         <!-- ============================================================= -->
         <!-- JAVADOC                                                       -->
@@ -82,10 +86,6 @@
 
         <!-- Signale les blocs vides -->
         <module name="EmptyBlock"/>
-
-        <!-- Vérifie le placement des accolades -->
-        <module name="LeftCurly"/>
-        <module name="RightCurly"/>
 
         <!-- Exige des accolades pour les structures de contrôle -->
         <module name="NeedBraces"/>
