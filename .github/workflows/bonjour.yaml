@@ -1,11 +1,10 @@
 name: Bonjour
 
 on:
-  push:
-    branches: ["main"]
+  workflow_dispatch:
 
 jobs:
-  dire-bonjour:
+  deployer:
     runs-on: ubuntu-latest
     environment: Deployment
     steps:
