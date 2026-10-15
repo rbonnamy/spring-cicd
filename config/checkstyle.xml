@@ -1,61 +1,74 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
         "https://checkstyle.org/dtds/configuration_1_3.dtd">
 
 <module name="Checker">
+
     <property name="charset" value="UTF-8"/>
-    <!-- Gravité par défaut : warning au lieu de error pour ne pas bloquer bêtement le build -->
     <property name="severity" value="warning"/>
     <property name="fileExtensions" value="java, properties, xml"/>
 
     <!-- Vérifie que les fichiers se terminent par une nouvelle ligne -->
     <module name="NewlineAtEndOfFile"/>
 
-    <!-- Pas de tabulations, uniquement des espaces -->
+    <!-- Signale les tabulations -->
     <module name="FileTabCharacter">
         <property name="eachLine" value="true"/>
     </module>
 
     <module name="TreeWalker">
 
-        <!-- ================================================================= -->
-        <!--  RÈGLES JAVADOC (Incluses et configurées intelligemment)          -->
-        <!-- ================================================================= -->
+        <!-- ============================================================= -->
+        <!-- JAVADOC                                                       -->
+        <!-- ============================================================= -->
 
-        <!-- Exige une Javadoc sur les classes/interfaces publiques et protégées -->
+        <!-- Exige une Javadoc sur les types publics et protégés -->
+        <module name="MissingJavadocType">
+            <property name="scope" value="protected"/>
+        </module>
+
+        <!-- Vérifie le contenu de la Javadoc des types publics et protégés -->
         <module name="JavadocType">
             <property name="scope" value="protected"/>
         </module>
 
-        <!-- Exige une Javadoc sur les méthodes publiques et protégées -->
-        <!-- Tolère l'absence de Javadoc si la méthode a l'annotation @Override -->
-        <module name="JavadocMethod">
+        <!-- Exige une Javadoc sur les méthodes publiques et protégées,
+             sauf celles portant les annotations indiquées -->
+        <module name="MissingJavadocMethod">
             <property name="scope" value="protected"/>
             <property name="allowedAnnotations" value="Override, Test, Bean"/>
         </module>
 
-        <!-- Exige une Javadoc pour les variables (ex: constantes publiques) -->
+        <!-- Vérifie le contenu de la Javadoc des méthodes -->
+        <module name="JavadocMethod">
+            <property name="accessModifiers" value="public, protected"/>
+            <property name="allowedAnnotations" value="Override, Test, Bean"/>
+        </module>
+
+        <!-- Exige une Javadoc sur les attributs publics et protégés -->
         <module name="JavadocVariable">
             <property name="scope" value="protected"/>
         </module>
 
-        <!-- Vérifie la bonne mise en forme de la Javadoc -->
+        <!-- Vérifie la forme de la Javadoc sans imposer de point final -->
         <module name="JavadocStyle">
-            <property name="checkFirstSentence" value="false"/> <!-- Ne force pas le point final à la 1ère phrase -->
+            <property name="checkFirstSentence" value="false"/>
         </module>
 
+        <!-- ============================================================= -->
+        <!-- IMPORTS                                                       -->
+        <!-- ============================================================= -->
 
-        <!-- ================================================================= -->
-        <!--  RÈGLES DE CODAGE INDULGENTES (Garde le code propre mais flexible)-->
-        <!-- ================================================================= -->
-
-        <!-- Interdit les imports avec .* (ex: import java.util.*;) -->
+        <!-- Interdit les imports avec .* -->
         <module name="AvoidStarImport"/>
 
-        <!-- Supprime les imports inutilisés -->
+        <!-- Signale les imports inutilisés -->
         <module name="UnusedImports"/>
 
-        <!-- Conventions de nommage de base (Classes, Méthodes, Variables) -->
+        <!-- ============================================================= -->
+        <!-- NOMMAGE                                                       -->
+        <!-- ============================================================= -->
+
         <module name="PackageName"/>
         <module name="TypeName"/>
         <module name="MethodName"/>
@@ -63,28 +76,36 @@
         <module name="ParameterName"/>
         <module name="StaticVariableName"/>
 
-        <!-- Évite les blocs vides (ex: un catch d'exception sans rien dedans) -->
+        <!-- ============================================================= -->
+        <!-- STRUCTURE DU CODE                                             -->
+        <!-- ============================================================= -->
+
+        <!-- Signale les blocs vides -->
         <module name="EmptyBlock"/>
+
+        <!-- Vérifie le placement des accolades -->
         <module name="LeftCurly"/>
         <module name="RightCurly"/>
 
-        <!-- Force l'utilisation d'accolades même pour les 'if' sur une seule ligne -->
+        <!-- Exige des accolades pour les structures de contrôle -->
         <module name="NeedBraces"/>
 
-        <!-- Modificateurs dans le bon ordre (ex: public static final, pas final public static) -->
+        <!-- Vérifie l'ordre des modificateurs -->
         <module name="ModifierOrder"/>
 
-        <!-- Évite de redéfinir une variable qui porte le même nom qu'un attribut (hors constructeurs/setters) -->
+        <!-- Signale les variables qui masquent un attribut,
+             sauf les paramètres des constructeurs et des setters -->
         <module name="HiddenField">
             <property name="ignoreConstructorParameter" value="true"/>
             <property name="ignoreSetter" value="true"/>
         </module>
 
-        <!-- Permet les annotations de suppression à l'intérieur du code si besoin -->
-        <module name="SuppressWarningsHolder" />
+        <!-- Collecte les annotations @SuppressWarnings -->
+        <module name="SuppressWarningsHolder"/>
 
     </module>
 
-    <!-- Permet d'utiliser le filtre de suppression -->
-    <module name="SuppressWarningsFilter" />
+    <!-- Applique les suppressions déclarées avec @SuppressWarnings -->
+    <module name="SuppressWarningsFilter"/>
+
 </module>
