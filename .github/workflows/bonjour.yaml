@@ -1,0 +1,12 @@
+name: Bonjour
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  dire-bonjour:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo bonjour
+        run: echo "Bonjour tout le monde !"
