@@ -1,24 +1,26 @@
 name: Configurer Java
 
 on:
+  # déclenchement manuel
   workflow_dispatch:
 
 jobs:
+  # id job
   affichage:
     runs-on: ubuntu-latest
     steps:
-      - name: Récupérer le code source
+      - name: récupérer les sources
         uses: actions/checkout@v7
 
-      - name: Configuration de Java
+      - name: configurer la version de Java
         uses: actions/setup-java@v5
         with:
           java-version: 21
           distribution: temurin
           cache: maven
 
-      - name: Afficher version java
+      - name: Afficher la version de Java
         run: java -version
 
-      - name: Afficher version maven
+      - name: Afficher la version de Maven
         run: mvn -version
