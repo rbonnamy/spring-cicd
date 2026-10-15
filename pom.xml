@@ -120,7 +120,7 @@
 				<version>3.5.0</version>
 
 				<configuration>
-					<configLocation>config/google_checks.xml</configLocation>
+					<configLocation>config/checkstyle.xml</configLocation>
 					<consoleOutput>true</consoleOutput>
 					<failsOnError>false</failsOnError>
 				</configuration>
