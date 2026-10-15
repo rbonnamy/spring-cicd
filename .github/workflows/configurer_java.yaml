@@ -21,4 +21,4 @@ jobs:
         run: java -version
 
       - name: Afficher version maven
-        run: mvn -v
+        run: mvn -version
