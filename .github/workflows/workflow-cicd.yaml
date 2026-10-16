@@ -46,15 +46,9 @@ jobs:
       - name: Générer le site Maven
         run: mvn site
 
-      - name: Publier le rapport Checkstyle
+      - name: Publier les rapports Checkstyle et SpotBugs
         uses: actions/upload-artifact@v5
         with:
-          name: rapport-checkstyle
+          name: rapports-qualite
           path: target/site/
-
-      - name: Publier le rapport SpotBugs
-        uses: actions/upload-artifact@v5
-        with:
-          name: rapport-spotbugs
-          path: target/spotbugs/
 

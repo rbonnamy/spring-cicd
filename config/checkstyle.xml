@@ -4,10 +4,12 @@
 
 <module name="Checker">
 
+    <!-- Analyse le fichier -->
     <property name="charset" value="UTF-8"/>
     <property name="severity" value="warning"/>
     <property name="fileExtensions" value="java, properties, xml"/>
 
+    <!-- Analyse la structure de la classe -->
     <module name="TreeWalker">
 
         <!-- Vérifie que equals() et hashCode() sont redéfinies ensemble -->
@@ -21,6 +23,17 @@
 
         <!-- Signale les passages non explicités entre les case d'un switch -->
         <module name="FallThrough"/>
+
+        <!-- Complexité cyclomatique maximale : 10 -->
+        <module name="CyclomaticComplexity">
+            <property name="max" value="10"/>
+        </module>
+
+        <!-- Longueur maximale : 50 lignes -->
+        <module name="MethodLength">
+            <property name="max" value="50"/>
+            <property name="countEmpty" value="false"/>
+        </module>
 
         <!-- ============================================================= -->
         <!-- JAVADOC                                                       -->
