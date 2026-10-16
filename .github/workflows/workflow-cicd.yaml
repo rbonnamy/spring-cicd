@@ -53,7 +53,7 @@ jobs:
           path: target/site/
 
       - name: Publier le rapport SpotBugs
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: rapport-spotbugs
           path: target/spotbugs/
